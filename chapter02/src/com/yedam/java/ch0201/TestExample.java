@@ -8,3 +8,5 @@ public class TestExample {
 	}
 
 }
+
+// git 관련 작업 추가
