@@ -35,11 +35,9 @@ public class HomeworkCh03 {
 
 //		val = val + 10;
 		val += 10;
-		System.out.println(val);
 		
 //		val = val - 5;
 		val -= 5;
-		System.out.println(val);
 		
 //		val = val * 3;
 		val *= 3;
