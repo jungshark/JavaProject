@@ -1,5 +1,7 @@
 package com.yedam.java.ch0402;
 
+import java.util.Scanner;
+
 public class ConditionalStatementSubject {
 
 	public static void main(String[] args) {
@@ -147,6 +149,86 @@ public class ConditionalStatementSubject {
 			}
 		}
 		System.out.println("주사위를 던진 횟수는 총 " + total1 + "번 입니다."); // 카운팅한 최종 값 출력
+		
+		
+		// 문제 6) 책 p161 6번
+		// 		  오른쪽 정렬 아스타(*) 찍기
+		//		* -> 1번째 줄: 공백 3개, 별 1개 => 총 문자 4개
+		//	   ** -> 2번째 줄: 공백 2개, 별 2개 => 총 문자 4개
+		//	  *** -> 3번째 줄: 공백 1개, 별 3개 => 총 문자 4개
+		//	 **** -> 4번째 줄: 공백 0개, 별 4개 => 총 문자 4개
+		// 공백은 점점 줄어들고, 비어있는 공백 자리만큼 별이 늘어나는 것
+		
+		for(int i=1; i<=4; i++) { // 바깥 for문: line 생성
+			for(int j=1; j<=4; j++) { // 내부 for문: 문자 수(한 줄에 총 4개가 표시되어야 함)
+				// 언제 공백을 추가하고 언제 별을 추가하지?
+				if(j <= (4-i)) {
+					// ex) i=1, j=1이면 1 <= 3 이니까 공백 출력하고 다시 내부 for문 돌아 j=2가 됨
+					// -> 그 다음 j=2일때 i는 여전히 1이라 2 <= 3 이라 공백 출력
+					// -> 다음 j=3일때 3 <= 3 이라 공백 출력
+					// -> 그 다음 j=4이고 4 <= 3 은 false라 * 출력
+					// j가 4까지 다 돌았으니 내부 for문 종료, 밑에 있는 System.out.println();로 줄바꿈 하고
+					// 바깥 for문으로 돌아가 i=2일때의 경우를 다시 시작
+					// 내부 for문에서 i=2, j=1일때의 if문을 다시 시작(공백, 별 찍고 반복)
+					System.out.println(" "); // 최대 크기인 4에서 i(줄)만큼 뺐을 때보다 j가 작으면 공백을 출력
+				}else {
+					System.out.println("*");
+				}
+			}
+			System.out.println();
+		}
+		
+		
+		// 문제 7) 책 p161 7번
+		boolean run = true;
+		int balance = 0; // 잔액(balance) 초기화
+		Scanner scanner = new Scanner(System.in);
+		// Scanner에 커서를 두고 ctrl + spacebar 누르면 scanner java 어쩌구가 뜨는데
+		// 그걸 클릭하면 제일 상단에 import java.util.Scanner; 이렇게 추가되고 scanner사용 가능해짐!
+		
+		// 아닌가..? ctrl + shift + o 이건가?
+		// Scanner: 기본으로 사용하는게 아님. ctrl + shift + o 해서 불러와야 scanner를 쓸 수 있음
+		
+		
+		while(run) { // while문 돌릴 때 조건은 딱히 없고, boolean타입으로 true일땐 실행, false면 종료만 체크
+			// while문 안에는 항상 이 메뉴 내용이 있음
+			// 사용자가 어떤 걸 선택하느냐에 따라 각 기능을 하게 하면 됨
+			System.out.println("------------------------------");
+			System.out.println(" 1.예금 | 2.출금 | 3.잔고 | 4.종료 ");
+			System.out.println("------------------------------");
+			System.out.print("선택> ");
+			// 사용자로부터 nextLine을 통해 입력받은걸 숫자(int)로 바꿔주는 방법
+			int selectNo = Integer.parseInt(scanner.nextLine());
+			// parseInt : String용이라고 생각하면 됨. String 객체 안에 있는 값을 끄집어와 맞는 기본 타입으로 변화시켜줌
+			// (String은 참조타입임!)
+			// 기본타입 <-> 참조타입 이동은 캐스팅 괄호로 불가능함
+			// nextLine으로 받아온 값은 객체로 있음(힙 영역에 객체가 생기고, 변수는 이 객체의 주소 번호만 가지고 있는 것
+			// 주소를 어떻게 타입을 바꿔 ㅠ 특정한 값이 아니고 걍 주소인디...
+			// 캐스팅 괄호를 사용 못 하는 이유: 캐스팅 괄호는 이 객체로부터 값을 가져오는 법을 모르고 // 캐스팅괄호는 변수에 저장된 값을 그냥 가져와 바꾸는 것
+			// 캐스팅 괄호: 기본타입끼리만, 혹은 참조타입끼리만 타입을 바꿀 수 있음
+			if(selectNo == 1) { // 메뉴: 예금
+				System.out.print("예금액> ");
+				int money = Integer.parseInt(scanner.nextLine()); // nextLine으로 입력받은 값을 int로 바꿔
+				balance = balance + money; // 기존의 잔액 위에 예금액을 얹어줌
+			}else if(selectNo == 2) { // 메뉴: 출금
+				System.out.print("출금액> ");
+				int money = Integer.parseInt(scanner.nextLine());
+				balance -= money;
+			}else if(selectNo == 3) { // 메뉴: 잔고. 그냥 현재 잔액을 보여주는 역할
+				System.out.println("잔고> " + balance);
+			}else if(selectNo == 4) { // 메뉴: 종료. 현재 큰 골격은 while문임! 이 while문을 stop시키는 것
+				run = false;
+				// break로 종료해도 되지만 -> 임의종료라 별로 권장하지 않음.
+				// while문을 동작시키는 변수가 있으니 false로 바꾸면 됨
+				// (만약 switch문을 사용하게 된다면 break를 잘 사용해야 함... 나중에 한번 해봐라)
+			}else { // 정해진 메뉴 외의 값을 입력했을 때 보일 내용 (문자를 입력하면 아예 오류가 날 거고, 숫자 중 1~4가 아닌 다른 값이 들어왔을 때 안내할 내용)
+				System.out.println("정해진 메뉴(1~4) 중에서 선택해 주세요.");
+			}
+			
+		}
+		
+		
+		
 		
 	}
 
