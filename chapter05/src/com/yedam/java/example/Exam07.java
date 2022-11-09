@@ -51,7 +51,8 @@ public class Exam07 {
 			}else if(selectNo == 4) { // 배열의 값을 전부 출력
 				System.out.println("현재 가지고 있는 수의 개수: " + count);
 				for(int i=0; i<count; i++) { // length해도 됨.
-					// count까지 출력하는 이유: 무의미한 값인 0까지 출력하는건 글코.. 그래서 현재 가지고 있는 개수까지만 출력하기 위해.
+					// count까지만 출력하는 이유: 무의미한 값인 0까지 출력하는건 별로고.. 그래서 현재 가지고 있는 개수까지만 출력하기 위해.
+					// 사용자의 입장에서는 필요없는 값은 출력 안 되는게 나음 ㅇㅇ
 					System.out.print(numList[i]+" ");
 				}
 				System.out.println();
