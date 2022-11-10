@@ -1,6 +1,6 @@
 package com.yedam.java.homework;
 
-public class Snack {
+public class Product {
 	
 	private String name;
 	private int price;
