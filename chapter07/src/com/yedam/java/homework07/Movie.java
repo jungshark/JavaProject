@@ -4,7 +4,7 @@ public class Movie extends Culture{
 	// 문제 3 관련
 	
 	// 필드
-	String genre;
+	String genre; // 장르
 	
 	// 생성자
 	public Movie(String name, int dirNum, int actNum, String genre) {
@@ -12,11 +12,11 @@ public class Movie extends Culture{
 		this.genre = genre;
 	}
 
-//	 메소드
-//	 1) 제목, 참여감독 수, 참여배우 수, 관객수, 총점, 평점을 출력하는 기능
+	 // 메소드
+	 // 1) 제목, 참여감독 수, 참여배우 수, 관객수, 총점, 평점을 출력하는 기능
 	@Override
 	public void getInformation() {
-		System.out.println("영화 제목: " + name);
+		System.out.println("영화제목: " + name);
 		System.out.println("감독: " + dirNum + "명");
 		System.out.println("배우: " + actNum + "명");
 		System.out.println("영화총점: " + total);
