@@ -20,7 +20,7 @@ public class Movie extends Culture{
 		System.out.println("감독: " + dirNum + "명");
 		System.out.println("배우: " + actNum + "명");
 		System.out.println("영화총점: " + total);
-		System.out.println("평점: " + getGrade());
+		System.out.println("영화평점: " + getGrade());
 	}
 	
 	
